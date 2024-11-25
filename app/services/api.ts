@@ -1,6 +1,6 @@
 import { Message } from '../types/chat'
 
-const API_KEY = process.env.DEEPSEEK_API_KEY
+const API_KEY = process.env.NEXT_PUBLIC_DEEPSEEK_API_KEY
 const API_URL = process.env.NEXT_PUBLIC_DEEPSEEK_API_URL
 
 const TIMEOUT_MS = 30000 // 30秒超时
@@ -32,6 +32,8 @@ export async function sendMessage(messages: Message[]) {
       clearTimeout(timeoutId)
 
       if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}))
+        console.error('API错误详情:', errorData)
         throw new Error(`API请求失败: ${response.status}`)
       }
 
