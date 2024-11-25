@@ -1,6 +1,6 @@
 import { Message } from '../types/chat'
 
-const API_KEY = process.env.NEXT_PUBLIC_DEEPSEEK_API_KEY
+const API_KEY = process.env.DEEPSEEK_API_KEY
 const API_URL = process.env.NEXT_PUBLIC_DEEPSEEK_API_URL
 
 const TIMEOUT_MS = 30000 // 30秒超时

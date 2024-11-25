@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { Message } from '../types/chat'
 import { sendMessage } from '../services/api'
 import { storage } from '../services/storage'
+import TypewriterEffect from '../components/TypewriterEffect'
 
 export default function ChatPage() {
   const [messages, setMessages] = useState<Message[]>([])
@@ -97,7 +98,11 @@ export default function ChatPage() {
                     : 'bg-white text-gray-900 shadow-sm'
                 }`}
               >
-                {message.content}
+                {message.role === 'assistant' ? (
+                  <TypewriterEffect text={message.content} />
+                ) : (
+                  message.content
+                )}
               </div>
             </div>
           ))}
