@@ -28,8 +28,9 @@ export default function AuthForm({ isLogin }: AuthFormProps) {
       if (result.user) {
         router.push('/chat');
       }
-    } catch (error: any) {
-      setError('Google 登录失败，请稍后重试');
+    } catch (error) {
+      const authError = error as AuthError;
+      setError('Google 登录失败：' + authError.message);
       console.error(error);
     }
   };
@@ -49,8 +50,9 @@ export default function AuthForm({ isLogin }: AuthFormProps) {
         await createUserWithEmailAndPassword(auth, email, password);
       }
       router.push('/chat');
-    } catch (error: any) {
-      setError(error.message || '操作失败，请稍后重试');
+    } catch (error) {
+      const authError = error as AuthError;
+      setError(authError.message || '操作失败，请稍后重试');
     } finally {
       setLoading(false);
     }

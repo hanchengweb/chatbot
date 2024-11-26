@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 
 export async function POST(request: Request) {
   try {
-    const { message, userId } = await request.json();
+    const { message } = await request.json();
 
     const response = await fetch(process.env.NEXT_PUBLIC_DEEPSEEK_API_URL!, {
       method: 'POST',
