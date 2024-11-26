@@ -1,16 +1,11 @@
 export interface Message {
-  role: 'user' | 'assistant'
-  content: string
+  id: string;
+  role: 'user' | 'assistant';
+  content: string;
+  timestamp: number;
 }
 
-export interface ChatResponse {
-  id: string
-  model: string
-  choices: {
-    message: {
-      role: string
-      content: string
-    }
-    finish_reason: string
-  }[]
+export interface ChatHistory {
+  messages: Message[];
+  userId: string;
 } 

@@ -38,3 +38,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Firebase
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
